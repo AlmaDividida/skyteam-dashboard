@@ -1,0 +1,23 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" [ngClass]="{'toggled': activeSideBar}">
+        <app-sidebar (activeSideBarEmit)="switchSidebarStatus($event)"></app-sidebar>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <app-header></app-header>
+            <!-- Begin Page Content -->
+                <router-outlet class="container-fluid"></router-outlet>
+            <!-- End of Page Content -->
+            <app-footer></app-footer>
+        </div> 
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->

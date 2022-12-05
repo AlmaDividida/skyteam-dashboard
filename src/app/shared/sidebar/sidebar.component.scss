@@ -1,0 +1,9 @@
+.sidebar-logo {
+    filter: brightness(0) invert(1);
+}
+
+@media (min-width: 768px){
+    .nav-item .nav-link {
+        width: 100%;
+    }
+}

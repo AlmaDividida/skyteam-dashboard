@@ -1,0 +1,9 @@
+@media (min-width: 768px){
+    .sidebar {
+        width: 18rem!important;
+    }
+
+    .sidebar.toggled{
+        width: auto!important;
+    }
+}
