@@ -28,52 +28,66 @@
     Menu
 </div>
 
-<!-- Nav Item - Submenu 1 Collapse Menu -->
+<!-- Nav Item - Admin Collapse Menu -->
 <li class="nav-item" [routerLinkActive]="['active']">
-    <a class="nav-link collapsed" role="button" data-toggle="collapse" data-target="#collapseSubmenu1"
-        aria-expanded="true" aria-controls="collapseSubmenu1">
+    <a class="nav-link collapsed" role="button" data-toggle="collapse" data-target="#collapseAdmin"
+        aria-expanded="true" aria-controls="collapseAdmin">
         <i class="fas fa-users"></i>
-        <span> Submenu </span>
+        <span> Admin </span>
     </a>
-    <div id="collapseSubmenu1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu1" aria-expanded="true" aria-controls="collapseSubmenu1" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu1" aria-expanded="true" aria-controls="collapseSubmenu1" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu1" aria-expanded="true" aria-controls="collapseSubmenu1" [routerLink]="['dashboard']">Dashboard</a>
+            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['groups']">Grupos</a>
+            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['dashboard']">Streamers</a>
         </div>
     </div>
 </li>
 
-<!-- Nav Item - Submenu 2 Collapse Menu -->
+<!-- Nav Item - Puntuaciones Collapse Menu -->
 <li class="nav-item" [routerLinkActive]="['active']">
-    <a class="nav-link collapsed" role="button" data-toggle="collapse" data-target="#collapseSubmenu2"
-        aria-expanded="true" aria-controls="collapseSubmenu2">
+    <a class="nav-link collapsed" role="button" data-toggle="collapse" data-target="#collapsePuntuaciones"
+        aria-expanded="true" aria-controls="collapsePuntuaciones">
         <i class="fas fa-users"></i>
-        <span> Submenu </span>
+        <span> Puntuaciones </span>
     </a>
-    <div id="collapseSubmenu2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapsePuntuaciones" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu2" aria-expanded="true" aria-controls="collapseSubmenu2" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu2" aria-expanded="true" aria-controls="collapseSubmenu2" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu2" aria-expanded="true" aria-controls="collapseSubmenu2" [routerLink]="['dashboard']">Dashboard</a>
+            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapsePuntuaciones" aria-expanded="true" aria-controls="collapsePuntuaciones" [routerLink]="['dashboard']">Puntos Totales</a>
+            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapsePuntuaciones" aria-expanded="true" aria-controls="collapsePuntuaciones" [routerLink]="['dashboard']">Registrar Puntos</a>
         </div>
     </div>
 </li>
 
-<!-- Nav Item - Submenu 3 Collapse Menu -->
+<!-- Nav Item - Ganadores -->
 <li class="nav-item" [routerLinkActive]="['active']">
-    <a class="nav-link collapsed" role="button" data-toggle="collapse" data-target="#collapseSubmenu3"
-        aria-expanded="true" aria-controls="collapseSubmenu3">
-        <i class="fas fa-users"></i>
-        <span> Submenu </span>
+    <a class="nav-link" [routerLink]="['dashboard']">
+        <i class="fas fa-trophy"></i>
+        <span> Ganadores </span>
     </a>
-    <div id="collapseSubmenu3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu3" aria-expanded="true" aria-controls="collapseSubmenu3" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu3" aria-expanded="true" aria-controls="collapseSubmenu3" [routerLink]="['dashboard']">Dashboard</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseSubmenu3" aria-expanded="true" aria-controls="collapseSubmenu3" [routerLink]="['dashboard']">Dashboard</a>
-        </div>
-    </div>
+</li>
+
+<!-- Nav Item - Horarios -->
+<li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" [routerLink]="['dashboard']">
+        <i class="fas fa-calendar"></i>
+        <span> Horarios </span>
+    </a>
+</li>
+
+<!-- Nav Item - Whatsapp -->
+<li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" [routerLink]="['dashboard']">
+        <i class="fas fa-phone"></i>
+        <span> Whatsapp </span>
+    </a>
+</li>
+
+<!-- Nav Item - Configuración -->
+<li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" [routerLink]="['dashboard']">
+        <i class="fas fa-cog"></i>
+        <span> Configuración </span>
+    </a>
 </li>
 
 <!-- Divider -->

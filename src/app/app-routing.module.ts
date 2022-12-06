@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GroupsComponent } from './pages/groups/groups.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,12 @@ const routes: Routes = [
         path: '', component: LayoutComponent, children: [
           { 
             path: 'dashboard', component: DashboardComponent
+          },
+          { 
+            path: 'groups', component: GroupsComponent
+          },
+          { 
+            path: '404', component: NotFoundComponent
           },
         ]
       },
