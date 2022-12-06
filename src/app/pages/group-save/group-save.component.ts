@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group } from 'src/app/model/group';
-import { GroupService } from 'src/core/services/group.service';
+import { Group } from 'src/app/model/group/group';
+import { GroupService } from 'src/core/services/group/group.service';
 
 @Component({
   selector: 'app-group-save',

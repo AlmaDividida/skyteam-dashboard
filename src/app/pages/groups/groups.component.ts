@@ -3,8 +3,8 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Group } from 'src/app/model/group';
-import { GroupService } from 'src/core/services/group.service';
+import { Group } from 'src/app/model/group/group';
+import { GroupService } from 'src/core/services/group/group.service';
 
 @Component({
   selector: 'app-groups',
