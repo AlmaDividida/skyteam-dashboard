@@ -12,28 +12,30 @@ import { GroupService } from 'src/core/services/group.service';
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id_group', 'name', 'streamers', 'action'];
-  dataSource;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private groupService: GroupService) {
+  groups!: Group[];
+  displayedColumns: string[] = ['name', 'description', 'action'];
+  dataSource!: MatTableDataSource<any>;
 
-    let data;
-    this.groupService.getAllGroups().subscribe(response => {
-      data = response;
-      console.log(response);
-    })
-    this.dataSource = new MatTableDataSource(data);
-
-  }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private groupService: GroupService) {}
 
   @ViewChild(MatSort) sort!: MatSort;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
-
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.groupService.getAllGroups().subscribe(response => {
+      this.groups = [];
+      response.map((r: any) => {
+        this.groups.push({
+          id: r.payload.doc.id,
+          ...r.payload.doc.data()
+        })
+      })
+      this.dataSource = new MatTableDataSource(this.groups);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    })
 
   }
 
@@ -45,11 +47,19 @@ export class GroupsComponent implements AfterViewInit {
     }
   }
 
-  deleteGroup(group: Group){
-    this.groupService.deleteGroup(group);
+  deleteGroup( id: string ){
+    this.groupService.deleteGroup(id).then(() => { 
+      console.log("Grupo eliminado con éxito");
+    }). catch(error => {
+      console.log(error);
+    });
   }
 
-  saveGroup(group: Group){
+  editGroup(){
+    
+  }
+
+  saveGroup( group: Group ){
     this.groupService.saveGroup(group);
   }
 

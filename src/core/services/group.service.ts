@@ -1,25 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { Group } from 'src/app/model/group';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
-  constructor( private httpClient: HttpClient ) {
+
+  constructor( private firestore: AngularFirestore ) {}
+
+  getAllGroups(): Observable <any> {
+    return this.firestore.collection('groups').snapshotChanges();
   }
 
-  deleteGroup(group: Group) {
+  saveGroup( group: Group ): Promise<any> {
+    return this.firestore.collection('groups').add(group);
   }
 
-  saveGroup( group: Group ) {
-    this.httpClient.put('https://skyteam-dashboard-backend-default-rtdb.firebaseio.com/group-data.json', group).subscribe(
-      response => console.log("Se ha guardado el grupo: ", response),
-      error => console.log("Error", error)
-    );
+  getGroup( id: string ): Observable <any> {
+    return this.firestore.collection('groups').doc(id).snapshotChanges();
   }
 
-  getAllGroups() {
-    return this.httpClient.get('https://skyteam-dashboard-backend-default-rtdb.firebaseio.com/group-data.json');
+  deleteGroup( id: string ): Promise<any> {
+    return this.firestore.collection('groups').doc(id).delete();
+  }
+
+  updateGroup( id: string, group: Group ): Promise<any> {
+    return this.firestore.collection('groups').doc(id).update(group);
   }
 }

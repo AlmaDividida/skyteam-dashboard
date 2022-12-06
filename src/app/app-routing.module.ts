@@ -4,6 +4,7 @@ import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.compone
 import { LayoutComponent } from './layout/layout/layout.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GroupSaveComponent } from './pages/group-save/group-save.component';
 import { GroupsComponent } from './pages/groups/groups.component';
 
 const routes: Routes = [
@@ -16,6 +17,12 @@ const routes: Routes = [
           },
           { 
             path: 'groups', component: GroupsComponent
+          },
+          { 
+            path: 'group-save', component: GroupSaveComponent
+          },
+          { 
+            path: 'group-save/:id', component: GroupSaveComponent
           },
           { 
             path: '404', component: NotFoundComponent
