@@ -54,7 +54,7 @@ export class GroupSaveComponent implements OnInit {
   }
 
   addGroup(group: Group){
-    this.groupService.saveGroup(group).then(() => {
+    this.groupService.addGroup(group).then(() => {
       console.log('Grupo registrado con éxito');
       this.router.navigate(['/app/groups']);
     }).catch(error => { 

@@ -1,4 +1,5 @@
 export class Schedule {
     day!: string;
-    time!: string;
+    time!: number;
+    stream: any | null;
 }

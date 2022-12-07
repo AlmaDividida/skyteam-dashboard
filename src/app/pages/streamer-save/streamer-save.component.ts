@@ -39,10 +39,7 @@ export class StreamerSaveComponent implements OnInit {
 
     const streamer: Streamer = {
       name: this.formStreamer.value.name,
-      group: this.formStreamer.value.group,
-      channel: this.formStreamer.value.channel,
       points: this.formStreamer.value.points,
-      schedule: this.formStreamer.value.schedule,
       email: this.formStreamer.value.email,
       whatsapp: this.formStreamer.value.whatsapp,
     }

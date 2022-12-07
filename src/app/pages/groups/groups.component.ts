@@ -54,9 +54,4 @@ export class GroupsComponent implements AfterViewInit {
       console.log(error);
     });
   }
-
-  saveGroup( group: Group ){
-    this.groupService.saveGroup(group);
-  }
-
 }
