@@ -1,0 +1,78 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+        <a [routerLink]="['/app/streamer']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-chevron-left"></i>
+            Regresar a todos los Streamers</a>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <form [formGroup]="formStreamer" class="mx-4">
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field class="form-full-width">
+                                    <mat-label>Nombre del Streamer</mat-label>
+                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
+                                    <mat-error>
+                                      El nombre del Streamer es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field class="form-full-width">
+                                    <mat-label>Nombre del Streamer</mat-label>
+                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
+                                    <mat-error>
+                                      El nombre del Streamer es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field class="form-full-width">
+                                    <mat-label>Nombre del Streamer</mat-label>
+                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
+                                    <mat-error>
+                                      El nombre del Streamer es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field class="form-full-width">
+                                    <mat-label>Nombre del Streamer</mat-label>
+                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
+                                    <mat-error>
+                                      El nombre del Streamer es <strong>requerido</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-primary btn-block shadow-sm" (click)="saveStreamer()">
+                                    <span *ngIf="id == null">
+                                        <i class="fas fa-plus"></i> 
+                                    </span>
+                                    <span *ngIf="id != null">
+                                        <i class="fas fa-edit"></i> 
+                                    </span>
+                                    {{ title }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

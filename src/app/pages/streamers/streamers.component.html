@@ -1,0 +1,68 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Lista de Streamers</h1>
+        <a [routerLink]="['../streamer-save']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i>
+            Agregar nuevo Streamer</a>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+                            id="dataTable" class="table-striped w-100">
+
+                            <!-- Nombre Column -->
+                            <ng-container matColumnDef="name">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header sortActionDescription="Sort by name">
+                                    Nombre
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                            </ng-container>
+
+                            <!-- Descripción Column -->
+                            <ng-container matColumnDef="description">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header sortActionDescription="Sort by description">
+                                    Descripción
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+                            </ng-container>
+
+                            <!-- Acción Version Column -->
+                            <ng-container matColumnDef="action">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef>
+                                    Acción
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="btn-actions">
+                                        <a [routerLink]="['/app/streamer-save/', element.id]" class="btn btn-primary btn-circle m-1">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-danger btn-circle m-1" (click)="deleteStreamer(element.id)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                            aria-label="Select page of streamer">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,6 +23,8 @@ import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.compone
 import { GroupsComponent } from './pages/groups/groups.component';
 import { GroupSaveComponent } from './pages/group-save/group-save.component';
 import { environment } from 'src/environments/environment';
+import { StreamersComponent } from './pages/streamers/streamers.component';
+import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { environment } from 'src/environments/environment';
     FooterComponent,
     LayoutBlankComponent,
     GroupsComponent,
-    GroupSaveComponent
+    GroupSaveComponent,
+    StreamersComponent,
+    StreamerSaveComponent
   ],
   imports: [
     BrowserModule,
