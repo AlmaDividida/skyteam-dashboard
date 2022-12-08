@@ -7,9 +7,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +42,7 @@ import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.compo
     GroupsComponent,
     GroupSaveComponent,
     StreamersComponent,
-    StreamerSaveComponent
+    StreamerSaveComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,9 @@ import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.compo
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

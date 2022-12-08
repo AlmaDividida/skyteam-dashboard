@@ -34,7 +34,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-primary btn-block shadow-sm" (click)="saveGroup()">
+                                <button class="btn btn-primary btn-block shadow-sm" [disabled]="formGroup.invalid" (click)="saveGroup()">
                                     <span *ngIf="id == null">
                                         <i class="fas fa-plus"></i> 
                                     </span>

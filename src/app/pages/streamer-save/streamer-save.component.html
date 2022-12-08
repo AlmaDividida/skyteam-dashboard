@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
-        <a [routerLink]="['/app/streamer']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a [routerLink]="['/app/streamers']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-chevron-left"></i>
             Regresar a todos los Streamers</a>
     </div>
@@ -17,54 +17,100 @@
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <form [formGroup]="formStreamer" class="mx-4">
-                        <div class="row">
-                            <div class="col-sm-6 col-12">
-                                <mat-form-field class="form-full-width">
-                                    <mat-label>Nombre del Streamer</mat-label>
-                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
-                                    <mat-error>
-                                      El nombre del Streamer es <strong>requerido</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                        <div class="form-group">
+                            <h5 class="text-primary">Datos Personales</h5>
+                            <div class="row">
+                                <div class="col-sm-4 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <mat-label>Nombre del Streamer</mat-label>
+                                        <input matInput formControlName="name" placeholder="Ej. Juan S. Guarnizo">
+                                        <mat-error>
+                                            El nombre del Streamer es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-4 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <mat-label>Usuario de Twtich</mat-label>
+                                        <input matInput formControlName="username" placeholder="Ej. No0bMaster69">
+                                        <mat-error>
+                                            El usuario de Twtich es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-4 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <mat-label>Seleccione un Grupo</mat-label>
+                                        <mat-select formControlName="group">
+                                            <mat-option *ngFor="let group of groups" [value]="group.id">
+                                                {{group.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-12">
-                                <mat-form-field class="form-full-width">
-                                    <mat-label>Nombre del Streamer</mat-label>
-                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
-                                    <mat-error>
-                                      El nombre del Streamer es <strong>requerido</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                            <div class="row">
+                                <div class="col-sm-12 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <mat-label>URL de Twitch</mat-label>
+                                        <input matInput formControlName="twitch_url" placeholder="Ej. https://www.twitch.tv/no0bmaster69">
+                                        <mat-error>
+                                            El URL de Twitch es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6 col-12">
-                                <mat-form-field class="form-full-width">
-                                    <mat-label>Nombre del Streamer</mat-label>
-                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
-                                    <mat-error>
-                                      El nombre del Streamer es <strong>requerido</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                        <div class="form-group">
+                            <h5 class="text-primary">Datos de Contácto</h5>
+                            <div class="row">
+                                <div class="col-sm-6 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <mat-label>Correo Electrónico</mat-label>
+                                        <input matInput formControlName="email" placeholder="Ej. correo@ejemplo.com">
+                                        <mat-error>
+                                            El Correo Electrónico es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-6 col-12 mb-3">
+                                    <mat-form-field class="form-full-width">
+                                        <!-- <span matPrefix>+1 &nbsp;</span> -->
+                                        <mat-label>Whatsapp</mat-label>
+                                        <input matInput formControlName="whatsapp" placeholder="1234567890">
+                                        <mat-icon matSuffix><i class="fas fa-phone"></i></mat-icon>
+                                        <mat-error>
+                                            El número Whatsapp es <strong>requerido</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-12">
-                                <mat-form-field class="form-full-width">
-                                    <mat-label>Nombre del Streamer</mat-label>
-                                    <input matInput formControlName="name" placeholder="Ej. SkyTeam">
-                                    <mat-error>
-                                      El nombre del Streamer es <strong>requerido</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                        </div>
+                        <div class="form-group mb-4">
+                            <h5 class="text-primary mb-4">Horario de Streams</h5>
+                            <mat-grid-list cols="6" rowHeight="6:1" *ngIf="schedules">
+                                <mat-grid-tile *ngFor="let scheduleHeader of scheduleHeaders" class="bg-primary">
+                                    <h6 class="text-white m-auto">{{ scheduleHeader }}</h6>
+                                </mat-grid-tile>
+                                <mat-grid-tile *ngFor="let schedule of schedules">
+                                    <button class="btn btn-block btn-light" [ngClass]="{'btn-light': schedule.streamers == null, 'btn-success' : schedule.streamers != null }" (click)="schedule.streamers = true">
+                                        {{schedule.time}}:00 hrs
+                                    </button>
+                                </mat-grid-tile>
+                            </mat-grid-list>
+                            <div *ngIf="!schedules">
+                                <p class="text-center">Seleccione un Grupo para seleccionar un horario</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-primary btn-block shadow-sm" (click)="saveStreamer()">
+                                <button class="btn btn-primary btn-block shadow-sm" [disabled]="formStreamer.invalid"
+                                    (click)="saveStreamer()">
                                     <span *ngIf="id == null">
-                                        <i class="fas fa-plus"></i> 
+                                        <i class="fas fa-plus"></i>
                                     </span>
                                     <span *ngIf="id != null">
-                                        <i class="fas fa-edit"></i> 
+                                        <i class="fas fa-edit"></i>
                                     </span>
                                     {{ title }}
                                 </button>
