@@ -1,4 +1,4 @@
-import { StreamType } from './streamtype';
+import { StreamType } from './stream-type';
 
 describe('StreamType', () => {
   it('should create an instance', () => {

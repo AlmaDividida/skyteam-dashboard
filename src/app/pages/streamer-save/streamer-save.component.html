@@ -53,7 +53,8 @@
                                 <div class="col-sm-12 col-12 mb-3">
                                     <mat-form-field class="form-full-width">
                                         <mat-label>URL de Twitch</mat-label>
-                                        <input matInput formControlName="twitch_url" placeholder="Ej. https://www.twitch.tv/no0bmaster69">
+                                        <input matInput formControlName="twitch_url"
+                                            placeholder="Ej. https://www.twitch.tv/no0bmaster69">
                                         <mat-error>
                                             El URL de Twitch es <strong>requerido</strong>
                                         </mat-error>
@@ -69,7 +70,7 @@
                                         <mat-label>Correo Electrónico</mat-label>
                                         <input matInput formControlName="email" placeholder="Ej. correo@ejemplo.com">
                                         <mat-error>
-                                            El Correo Electrónico es <strong>requerido</strong>
+                                            El Correo Electrónico es <strong>inválido</strong>
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
@@ -80,7 +81,7 @@
                                         <input matInput formControlName="whatsapp" placeholder="1234567890">
                                         <mat-icon matSuffix><i class="fas fa-phone"></i></mat-icon>
                                         <mat-error>
-                                            El número Whatsapp es <strong>requerido</strong>
+                                            El número Whatsapp es <strong>inválido</strong>
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
@@ -88,19 +89,17 @@
                         </div>
                         <div class="form-group mb-4">
                             <h5 class="text-primary mb-4">Horario de Streams</h5>
-                            <mat-grid-list cols="6" rowHeight="6:1" *ngIf="schedules">
-                                <mat-grid-tile *ngFor="let scheduleHeader of scheduleHeaders" class="bg-primary">
-                                    <h6 class="text-white m-auto">{{ scheduleHeader }}</h6>
-                                </mat-grid-tile>
-                                <mat-grid-tile *ngFor="let schedule of schedules">
-                                    <button class="btn btn-block btn-light" [ngClass]="{'btn-light': schedule.streamers == null, 'btn-success' : schedule.streamers != null }" (click)="schedule.streamers = true">
-                                        {{schedule.time}}:00 hrs
-                                    </button>
-                                </mat-grid-tile>
-                            </mat-grid-list>
-                            <div *ngIf="!schedules">
-                                <p class="text-center">Seleccione un Grupo para seleccionar un horario</p>
-                            </div>
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100 mb-5">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="horario">
+                                    <th mat-header-cell *matHeaderCellDef> Horario </th>
+                                    <td mat-cell *matCellDef="let element"> {{ element }} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
                         </div>
                         <div class="row">
                             <div class="col-12">

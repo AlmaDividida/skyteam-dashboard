@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Group } from 'src/app/model/group/group';
 import { Streamer } from 'src/app/model/streamer/streamer';
 import { GroupService } from 'src/core/services/group/group.service';
-import { ScheduleService } from 'src/core/services/schedule/schedule.service';
 import { StreamerService } from 'src/core/services/streamer/streamer.service';
 
 @Component({
@@ -15,14 +14,33 @@ import { StreamerService } from 'src/core/services/streamer/streamer.service';
 export class StreamerSaveComponent implements OnInit {
 
   title!: string;
-  groups!: any[];
-  schedules!: any[];
-  scheduleHeaders!: string[];
+
   id!: string | null;
+
   formStreamer: FormGroup;
 
-  constructor(private streamerService: StreamerService, private router: Router, private activatedRoute: ActivatedRoute, private groupService: GroupService, private scheduleService: ScheduleService) {
-    this.scheduleHeaders = this.generateScheduleHeaders();
+  groups!: any[];
+
+  maxSchedules!: number;
+
+  scheduleCount!: number;
+
+  schedules!: any[];
+
+  scheduleHeaders!: string[];
+
+  displayedColumns: string[] = ['horario', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
+
+  dataSource: any;
+
+  constructor(
+    private streamerService: StreamerService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private groupService: GroupService
+  ) {
+    this.scheduleCount = 0;
+    this.maxSchedules = 2;
 
     this.formStreamer = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -38,16 +56,9 @@ export class StreamerSaveComponent implements OnInit {
   ngOnInit(): void {
     this.isEdit();
     this.getGroups();
-    this.formStreamer.get('group')?.valueChanges.subscribe( response => {
-      this.getSchedule(response);
-    });
-    this.formStreamer.get('username')?.valueChanges.subscribe( response=> {
+    this.formStreamer.get('username')?.valueChanges.subscribe(response => {
       this.formStreamer.controls['twitch_url'].setValue('https://www.twitch.tv/' + response.toString().toLocaleLowerCase())
     });
-  }
-
-  generateScheduleHeaders(){
-    return ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   }
 
   getGroups() {
@@ -55,18 +66,6 @@ export class StreamerSaveComponent implements OnInit {
       this.groups = [];
       response.map((r: any) => {
         this.groups.push({
-          id: r.payload.doc.id,
-          ...r.payload.doc.data()
-        });
-      })
-    });
-  }
-
-  getSchedule(id_group: string) {
-    this.scheduleService.getAllSchedules(id_group).subscribe(response => {
-      this.schedules = [];
-      response.map((r: any) => {
-        this.schedules.push({
           id: r.payload.doc.id,
           ...r.payload.doc.data()
         });
@@ -83,6 +82,7 @@ export class StreamerSaveComponent implements OnInit {
       name: this.formStreamer.value.name,
       email: this.formStreamer.value.email,
       whatsapp: this.formStreamer.value.whatsapp,
+      group: new Group(),
       points: 0,
     }
 

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScheduleService } from './schedule.service';
+import { StreamTypeService } from './stream-type.service';
 
-describe('ScheduleService', () => {
-  let service: ScheduleService;
+describe('StreamTypeService', () => {
+  let service: StreamTypeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ScheduleService);
+    service = TestBed.inject(StreamTypeService);
   });
 
   it('should be created', () => {

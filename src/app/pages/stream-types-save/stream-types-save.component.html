@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
-        <a [routerLink]="['/app/groups']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a [routerLink]="['/app/stream-types']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-chevron-left"></i>
             Regresar a todos los Grupos</a>
     </div>
@@ -16,27 +16,30 @@
         <div class="col-12 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <form [formGroup]="formGroup" class="mx-4">
+                    <form [formGroup]="formStreamType" class="mx-4">
                         <div class="row">
-                            <div class="col-12 mb-3">
+                            <div class="col-sm-8 mb-3">
                                 <mat-form-field class="form-full-width">
-                                    <mat-label>Nombre del grupo</mat-label>
+                                    <mat-label>Tipo de Stream</mat-label>
                                     <input matInput formControlName="name" placeholder="Ej. SkyTeam">
                                     <mat-error>
-                                      El nombre del Grupo es <strong>requerido</strong>
+                                      El Tipo de Stream del Grupo es <strong>requerido</strong>
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="col-12 mb-3">
+                            <div class="col-sm-4 mb-3">
                                 <mat-form-field class="form-full-width">
-                                    <mat-label>Descripción del Grupo</mat-label>
-                                    <textarea matInput formControlName="description" placeholder="Ej. Grupo de Ejemplo..." rows="5"></textarea>
+                                    <mat-label>Recompensa de Puntos</mat-label>
+                                    <input matInput type="number" formControlName="stream_type" placeholder="Ej. 10">
+                                    <mat-error>
+                                      La Recompensa de Puntos es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 mb-3">
-                                <button class="btn btn-primary btn-block shadow-sm" [disabled]="formGroup.invalid" (click)="saveGroup()">
+                            <div class="col-12">
+                                <button class="btn btn-primary btn-block shadow-sm" [disabled]="formStreamType.invalid" (click)="saveStreamType()">
                                     <span *ngIf="id == null">
                                         <i class="fas fa-plus"></i> 
                                     </span>

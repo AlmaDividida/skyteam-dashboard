@@ -27,6 +27,8 @@ import { GroupSaveComponent } from './pages/group-save/group-save.component';
 import { environment } from 'src/environments/environment';
 import { StreamersComponent } from './pages/streamers/streamers.component';
 import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.component';
+import { StreamTypesComponent } from './pages/stream-types/stream-types.component';
+import { StreamTypeSaveComponent } from './pages/stream-types-save/stream-types-save.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.compo
     GroupSaveComponent,
     StreamersComponent,
     StreamerSaveComponent,
+    StreamTypesComponent,
+    StreamTypeSaveComponent
   ],
   imports: [
     BrowserModule,
