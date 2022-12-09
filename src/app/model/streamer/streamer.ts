@@ -1,9 +1,10 @@
 import { Group } from "../group/group";
 
 export class Streamer {
-    name!: string;
+    username!: string;
+    twitch_url!: string;
+    group!: Group;
     email!: string;
     whatsapp!: string;
     points!: number;
-    group!: Group;
 }

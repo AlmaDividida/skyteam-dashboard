@@ -4,7 +4,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Lista de Streamers</h1>
-        <a [routerLink]="['../streamer-save']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i>
+        <a [routerLink]="['../streamer-save']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus"></i>
             Agregar nuevo Streamer</a>
     </div>
 
@@ -20,21 +21,48 @@
                             id="dataTable" class="table-striped w-100">
 
                             <!-- Nombre Column -->
-                            <ng-container matColumnDef="name">
+                            <ng-container matColumnDef="username">
                                 <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
-                                    mat-sort-header sortActionDescription="Sort by name">
-                                    Nombre
+                                    mat-sort-header sortActionDescription="Sort by username">
+                                    Nombre de Usuario
                                 </th>
-                                <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                                <td mat-cell *matCellDef="let element"> {{ element.username }} </td>
+                            </ng-container>
+                            
+                            <!-- Grupo Column -->
+                            <ng-container matColumnDef="group">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header sortActionDescription="Sort by group">
+                                    Grupo
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{ element.group.name }} </td>
                             </ng-container>
 
-                            <!-- Descripción Column -->
-                            <ng-container matColumnDef="description">
+                            <!-- URL de Twitch Column -->
+                            <ng-container matColumnDef="twitch_url">
                                 <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
-                                    mat-sort-header sortActionDescription="Sort by description">
-                                    Descripción
+                                    mat-sort-header sortActionDescription="Sort by twitch_url">
+                                    URL de Twitch
                                 </th>
-                                <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+                                <td mat-cell *matCellDef="let element"> {{ element.twitch_url }} </td>
+                            </ng-container>
+
+                            <!-- Correo Electrónico Column -->
+                            <ng-container matColumnDef="email">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header sortActionDescription="Sort by email">
+                                    Correo Electrónico
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+                            </ng-container>
+
+                            <!-- Whatsapp Column -->
+                            <ng-container matColumnDef="whatsapp">
+                                <th class="h6 text-primary font-weight-bold" mat-header-cell *matHeaderCellDef
+                                    mat-sort-header sortActionDescription="Sort by whatsapp">
+                                    Whatsapp
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{ element.whatsapp }} </td>
                             </ng-container>
 
                             <!-- Acción Version Column -->
@@ -44,10 +72,12 @@
                                 </th>
                                 <td mat-cell *matCellDef="let element">
                                     <div class="btn-actions">
-                                        <a [routerLink]="['/app/streamer-save/', element.id]" class="btn btn-primary btn-circle m-1">
+                                        <a [routerLink]="['/app/streamer-save/', element.id]"
+                                            class="btn btn-primary btn-circle m-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button class="btn btn-danger btn-circle m-1" (click)="deleteStreamer(element.id)">
+                                        <button class="btn btn-danger btn-circle m-1"
+                                            (click)="deleteStreamer(element.id)">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>

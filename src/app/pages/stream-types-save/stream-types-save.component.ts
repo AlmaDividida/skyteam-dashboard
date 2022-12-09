@@ -18,7 +18,7 @@ export class StreamTypeSaveComponent implements OnInit {
   constructor( private streamTypeService: StreamTypeService, private router: Router, private activatedRoute: ActivatedRoute ) {
     this.formStreamType = new FormGroup({
       name: new FormControl('', Validators.required),
-      stream_type: new FormControl('', Validators.required)
+      points_reward: new FormControl('', Validators.required)
     });
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -34,7 +34,7 @@ export class StreamTypeSaveComponent implements OnInit {
 
     const streamType: StreamType = {
       name: this.formStreamType.value.name,
-      points_reward: this.formStreamType.value.stream_type
+      points_reward: this.formStreamType.value.points_reward
     }
 
     if (this.id === null) {
@@ -66,10 +66,9 @@ export class StreamTypeSaveComponent implements OnInit {
     if(this.id != null ) {
       this.title = "Editar Tipo de Stream"
       this.streamTypeService.getStreamType(this.id).subscribe(data => {
-        console.log(data.payload.data()['name']);
         this.formStreamType.setValue({
           name: data.payload.data()['name'],
-          stream_type: data.payload.data()['stream_type']
+          points_reward: data.payload.data()['points_reward']
         });
       });
     } else {

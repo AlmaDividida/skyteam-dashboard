@@ -49,6 +49,7 @@ export class StreamerSaveComponent implements OnInit {
       twitch_url: new FormControl('https://www.twitch.tv/', Validators.required),
       email: new FormControl('', Validators.email),
       whatsapp: new FormControl('', Validators.pattern('[- +()0-9]+')),
+      points: new FormControl(0),
     });
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -79,11 +80,12 @@ export class StreamerSaveComponent implements OnInit {
     }
 
     const streamer: Streamer = {
-      name: this.formStreamer.value.name,
+      username: this.formStreamer.value.name,
+      twitch_url: this.formStreamer.value.twitch_url,
       email: this.formStreamer.value.email,
       whatsapp: this.formStreamer.value.whatsapp,
-      group: new Group(),
-      points: 0,
+      group: this.formStreamer.value.group,
+      points: this.formStreamer.value.points,
     }
 
     if (this.id === null) {
@@ -105,7 +107,7 @@ export class StreamerSaveComponent implements OnInit {
   addStreamer(streamer: Streamer) {
     this.streamerService.saveStreamer(streamer).then(() => {
       console.log('Streamer registrado con éxito');
-      this.router.navigate(['/app/groups']);
+      this.router.navigate(['/app/streamers']);
     }).catch(error => {
       console.log(error);
     });
@@ -115,15 +117,13 @@ export class StreamerSaveComponent implements OnInit {
     if (this.id != null) {
       this.title = "Editar Streamer"
       this.streamerService.getStreamer(this.id).subscribe(data => {
-        console.log(data.payload.data()['name']);
         this.formStreamer.setValue({
-          name: data.payload.data()['name'],
-          group: data.payload.data()['group'],
-          channel: data.payload.data()['channel'],
-          points: data.payload.data()['points'],
-          schedule: data.payload.data()['schedule'],
+          username: data.payload.data()['username'],
+          twitch_url: data.payload.data()['twitch_url'],
           email: data.payload.data()['email'],
           whatsapp: data.payload.data()['whatsapp'],
+          group: data.payload.data()['group'],
+          points: data.payload.data()['points'],
         });
       });
     } else {

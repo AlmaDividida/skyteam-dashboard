@@ -66,7 +66,6 @@ export class GroupSaveComponent implements OnInit {
     if(this.id != null ) {
       this.title = "Editar Grupo"
       this.groupService.getGroup(this.id).subscribe(data => {
-        console.log(data.payload.data()['name']);
         this.formGroup.setValue({
           name: data.payload.data()['name'],
           description: data.payload.data()['description']

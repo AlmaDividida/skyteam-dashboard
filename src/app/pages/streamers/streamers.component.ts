@@ -14,7 +14,7 @@ import { StreamerService } from 'src/core/services/streamer/streamer.service';
 export class StreamersComponent implements AfterViewInit {
 
   streamers!: Streamer[];
-  displayedColumns: string[] = ['name', 'description', 'action'];
+  displayedColumns: string[] = ['username', 'group', 'twitch_url', 'email', 'whatsapp', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private streamerService: StreamerService) {}

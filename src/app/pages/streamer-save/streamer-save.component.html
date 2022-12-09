@@ -20,16 +20,7 @@
                         <div class="form-group">
                             <h5 class="text-primary">Datos Personales</h5>
                             <div class="row">
-                                <div class="col-sm-4 col-12 mb-3">
-                                    <mat-form-field class="form-full-width">
-                                        <mat-label>Nombre del Streamer</mat-label>
-                                        <input matInput formControlName="name" placeholder="Ej. Juan S. Guarnizo">
-                                        <mat-error>
-                                            El nombre del Streamer es <strong>requerido</strong>
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-sm-4 col-12 mb-3">
+                                <div class="col-sm-6 col-12 mb-3">
                                     <mat-form-field class="form-full-width">
                                         <mat-label>Usuario de Twtich</mat-label>
                                         <input matInput formControlName="username" placeholder="Ej. No0bMaster69">
@@ -38,7 +29,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-sm-4 col-12 mb-3">
+                                <div class="col-sm-6 col-12 mb-3">
                                     <mat-form-field class="form-full-width">
                                         <mat-label>Seleccione un Grupo</mat-label>
                                         <mat-select formControlName="group">
@@ -50,15 +41,21 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12 col-12 mb-3">
+                                <div class="col-sm-10 col-12 mb-3">
                                     <mat-form-field class="form-full-width">
                                         <mat-label>URL de Twitch</mat-label>
                                         <input matInput formControlName="twitch_url"
-                                            placeholder="Ej. https://www.twitch.tv/no0bmaster69">
+                                            placeholder="Ej. https://www.twitch.tv/no0bmaster69" readonly>
                                         <mat-error>
                                             El URL de Twitch es <strong>requerido</strong>
                                         </mat-error>
                                     </mat-form-field>
+                                </div>
+                                <div class="col-sm-2 col-12 mb-3">
+                                    <a class="btn btn-primary btn-block shadow-sm" [href]="formStreamer.controls['twitch_url'].value" target="_blank">
+                                        <i class="fas fa-external-link mr-1"></i>
+                                        Verificar si existe
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +75,7 @@
                                     <mat-form-field class="form-full-width">
                                         <!-- <span matPrefix>+1 &nbsp;</span> -->
                                         <mat-label>Whatsapp</mat-label>
-                                        <input matInput formControlName="whatsapp" placeholder="1234567890">
+                                        <input matInput formControlName="whatsapp" placeholder="+52 55 5555 5555">
                                         <mat-icon matSuffix><i class="fas fa-phone"></i></mat-icon>
                                         <mat-error>
                                             El número Whatsapp es <strong>inválido</strong>
@@ -86,20 +83,6 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <h5 class="text-primary mb-4">Horario de Streams</h5>
-                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100 mb-5">
-
-                                <!-- Position Column -->
-                                <ng-container matColumnDef="horario">
-                                    <th mat-header-cell *matHeaderCellDef> Horario </th>
-                                    <td mat-cell *matCellDef="let element"> {{ element }} </td>
-                                </ng-container>
-
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            </table>
                         </div>
                         <div class="row">
                             <div class="col-12">
