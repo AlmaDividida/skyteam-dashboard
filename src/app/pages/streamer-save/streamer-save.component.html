@@ -33,8 +33,8 @@
                                     <mat-form-field class="form-full-width">
                                         <mat-label>Seleccione un Grupo</mat-label>
                                         <mat-select formControlName="group">
-                                            <mat-option *ngFor="let group of groups" [value]="group.id">
-                                                {{group.name}}
+                                            <mat-option *ngFor="let g of groups" [value]="g.id">
+                                                {{g.name}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -88,10 +88,10 @@
                             <div class="col-12">
                                 <button class="btn btn-primary btn-block shadow-sm" [disabled]="formStreamer.invalid"
                                     (click)="saveStreamer()">
-                                    <span *ngIf="id == null">
+                                    <span *ngIf="id_streamer == null">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span *ngIf="id != null">
+                                    <span *ngIf="id_streamer != null">
                                         <i class="fas fa-edit"></i>
                                     </span>
                                     {{ title }}

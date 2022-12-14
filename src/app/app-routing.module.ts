@@ -35,7 +35,7 @@ const routes: Routes = [
             path: 'streamer-save', component: StreamerSaveComponent
           },
           { 
-            path: 'streamer-save/:id', component: StreamerSaveComponent
+            path: 'streamer-save/:id_group/:id_streamer', component: StreamerSaveComponent
           },
           { 
             path: 'stream-types', component: StreamTypesComponent

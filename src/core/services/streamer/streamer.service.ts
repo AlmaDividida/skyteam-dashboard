@@ -10,23 +10,23 @@ export class StreamerService {
 
   constructor( private firestore: AngularFirestore ) {}
 
-  getAllStreamers(): Observable <any> {
-    return this.firestore.collection('streamer').snapshotChanges();
+  getAllStreamers( id_group: string ): Observable <any> {
+    return this.firestore.collection('groups').doc(id_group).collection('streamers').snapshotChanges();
   }
 
-  saveStreamer( streamer: Streamer ): Promise<any> {
-    return this.firestore.collection('streamer').add(streamer);
+  saveStreamer( id_group: string, streamer: Streamer ): Promise<any> {
+    return this.firestore.collection('groups').doc(id_group).collection('streamers').add(streamer);
   }
 
-  getStreamer( id: string ): Observable <any> {
-    return this.firestore.collection('streamer').doc(id).snapshotChanges();
+  getStreamer( id_group: string, id_streamer: string ): Observable <any> {
+    return this.firestore.collection('groups').doc(id_group).collection('streamers').doc(id_streamer).snapshotChanges();
   }
 
-  deleteStreamer( id: string ): Promise<any> {
-    return this.firestore.collection('streamer').doc(id).delete();
+  deleteStreamer( id_group: string, id_streamer: string): Promise<any> {
+    return this.firestore.collection('groups').doc(id_group).collection('streamers').doc(id_streamer).delete();
   }
 
-  updateStreamer( id: string, Streamer: Streamer ): Promise<any> {
-    return this.firestore.collection('streamer').doc(id).update(Streamer);
+  updateStreamer( id_group: string, id_streamer: string, streamer: Streamer ): Promise<any> {
+    return this.firestore.collection('groups').doc(id_group).collection('streamers').doc(id_streamer).update(streamer);
   }
 }

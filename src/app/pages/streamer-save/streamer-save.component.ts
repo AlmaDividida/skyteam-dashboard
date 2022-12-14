@@ -15,7 +15,9 @@ export class StreamerSaveComponent implements OnInit {
 
   title!: string;
 
-  id!: string | null;
+  id_group!: string | null;
+
+  id_streamer!: string | null;
 
   formStreamer: FormGroup;
 
@@ -43,7 +45,6 @@ export class StreamerSaveComponent implements OnInit {
     this.maxSchedules = 2;
 
     this.formStreamer = new FormGroup({
-      name: new FormControl('', Validators.required),
       username: new FormControl('', Validators.required),
       group: new FormControl(null, Validators.required),
       twitch_url: new FormControl('https://www.twitch.tv/', Validators.required),
@@ -51,7 +52,8 @@ export class StreamerSaveComponent implements OnInit {
       whatsapp: new FormControl('', Validators.pattern('[- +()0-9]+')),
       points: new FormControl(0),
     });
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id_group = this.activatedRoute.snapshot.paramMap.get('id_group');
+    this.id_streamer = this.activatedRoute.snapshot.paramMap.get('id_streamer');
   }
 
   ngOnInit(): void {
@@ -80,23 +82,22 @@ export class StreamerSaveComponent implements OnInit {
     }
 
     const streamer: Streamer = {
-      username: this.formStreamer.value.name,
+      username: this.formStreamer.value.username,
       twitch_url: this.formStreamer.value.twitch_url,
       email: this.formStreamer.value.email,
       whatsapp: this.formStreamer.value.whatsapp,
-      group: this.formStreamer.value.group,
       points: this.formStreamer.value.points,
     }
 
-    if (this.id === null) {
-      this.addStreamer(streamer);
+    if (this.id_streamer === null) {
+      this.addStreamer( this.formStreamer.value.group, streamer );
     } else {
-      this.updateStreamer(this.id, streamer);
+      this.updateStreamer( this.formStreamer.value.group, this.id_streamer, streamer );
     }
   }
 
-  updateStreamer(id: string, streamer: Streamer) {
-    this.streamerService.updateStreamer(id, streamer).then(() => {
+  updateStreamer(id_group: string, id_streamer: string, streamer: Streamer) {
+    this.streamerService.updateStreamer(id_group, id_streamer, streamer ).then(() => {
       console.log('Streamer actualizado con éxito');
       this.router.navigate(['/app/streamers']);
     }).catch(error => {
@@ -104,8 +105,8 @@ export class StreamerSaveComponent implements OnInit {
     });
   }
 
-  addStreamer(streamer: Streamer) {
-    this.streamerService.saveStreamer(streamer).then(() => {
+  addStreamer(id_group: string, streamer: Streamer) {
+    this.streamerService.saveStreamer(id_group, streamer ).then(() => {
       console.log('Streamer registrado con éxito');
       this.router.navigate(['/app/streamers']);
     }).catch(error => {
@@ -114,15 +115,15 @@ export class StreamerSaveComponent implements OnInit {
   }
 
   isEdit() {
-    if (this.id != null) {
-      this.title = "Editar Streamer"
-      this.streamerService.getStreamer(this.id).subscribe(data => {
+    if (this.id_group != null && this.id_streamer != null) {
+      this.title = "Editar Streamer";
+      this.streamerService.getStreamer(this.id_group, this.id_streamer).subscribe(data => {
         this.formStreamer.setValue({
           username: data.payload.data()['username'],
           twitch_url: data.payload.data()['twitch_url'],
           email: data.payload.data()['email'],
           whatsapp: data.payload.data()['whatsapp'],
-          group: data.payload.data()['group'],
+          group: this.id_group,
           points: data.payload.data()['points'],
         });
       });
