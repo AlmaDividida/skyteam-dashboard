@@ -30,7 +30,7 @@ import { StreamersComponent } from './pages/streamers/streamers.component';
 import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.component';
 import { StreamTypesComponent } from './pages/stream-types/stream-types.component';
 import { StreamTypeSaveComponent } from './pages/stream-types-save/stream-types-save.component';
-import { HorariosComponent } from './pages/horarios/horarios.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
     StreamerSaveComponent,
     StreamTypesComponent,
     StreamTypeSaveComponent,
-    HorariosComponent
+    ScheduleComponent
   ],
   imports: [ 
     MbscModule,
