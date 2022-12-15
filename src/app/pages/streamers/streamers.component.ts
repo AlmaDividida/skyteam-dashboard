@@ -46,7 +46,7 @@ export class StreamersComponent implements AfterViewInit {
     if (this.id_group.value == null) {
       return;
     }
-    this.streamerService.getAllStreamers( this.id_group.value ).subscribe(response => {
+    this.streamerService.getAllStreamersByGroup( this.id_group.value ).subscribe(response => {
       this.streamers = [];
       response.map((r: any) => {
         this.streamers.push({

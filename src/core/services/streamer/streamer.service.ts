@@ -10,7 +10,11 @@ export class StreamerService {
 
   constructor( private firestore: AngularFirestore ) {}
 
-  getAllStreamers( id_group: string ): Observable <any> {
+  getAllStreamers(): Observable <any> {
+    return this.firestore.collectionGroup('streamers').snapshotChanges();
+  }
+  
+  getAllStreamersByGroup( id_group: string ): Observable <any> {
     return this.firestore.collection('groups').doc(id_group).collection('streamers').snapshotChanges();
   }
 

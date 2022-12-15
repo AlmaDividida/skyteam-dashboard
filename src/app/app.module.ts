@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { StreamersComponent } from './pages/streamers/streamers.component';
 import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.component';
 import { StreamTypesComponent } from './pages/stream-types/stream-types.component';
 import { StreamTypeSaveComponent } from './pages/stream-types-save/stream-types-save.component';
+import { HorariosComponent } from './pages/horarios/horarios.component';
 
 
 @NgModule({
@@ -46,9 +48,11 @@ import { StreamTypeSaveComponent } from './pages/stream-types-save/stream-types-
     StreamersComponent,
     StreamerSaveComponent,
     StreamTypesComponent,
-    StreamTypeSaveComponent
+    StreamTypeSaveComponent,
+    HorariosComponent
   ],
-  imports: [
+  imports: [ 
+    MbscModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

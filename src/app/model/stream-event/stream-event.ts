@@ -1,8 +1,11 @@
 import { StreamType } from "../stream-type/stream-type";
 
 export class StreamEvent {
-    time_day!: number;
-    time_hour!: number;
-    viewers!: number;
+    start!: string;
+    end!: string;
+    title!: string;
+    allDay!: string;
+    free!: string;
+    color!: string;
     stream_type!: StreamType;
 }

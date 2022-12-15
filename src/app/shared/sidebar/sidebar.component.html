@@ -39,10 +39,17 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['groups']">Grupos</a>
             <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['streamers']">Streamers</a>
-            <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['streams']">Streams</a>
             <a class="collapse-item py-1" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin" [routerLink]="['stream-types']">Tipos de Stream</a>
         </div>
     </div>
+</li>
+
+<!-- Nav Item - Horarios -->
+<li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" [routerLink]="['horarios']">
+        <i class="fas fa-calendar"></i>
+        <span> Horarios </span>
+    </a>
 </li>
 
 <!-- Nav Item - Puntuaciones Collapse Menu -->
@@ -65,14 +72,6 @@
     <a class="nav-link" [routerLink]="['dashboard']">
         <i class="fas fa-trophy"></i>
         <span> Ganadores </span>
-    </a>
-</li>
-
-<!-- Nav Item - Horarios -->
-<li class="nav-item" [routerLinkActive]="['active']">
-    <a class="nav-link" [routerLink]="['dashboard']">
-        <i class="fas fa-calendar"></i>
-        <span> Horarios </span>
     </a>
 </li>
 

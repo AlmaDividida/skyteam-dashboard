@@ -6,6 +6,7 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GroupSaveComponent } from './pages/group-save/group-save.component';
 import { GroupsComponent } from './pages/groups/groups.component';
+import { HorariosComponent } from './pages/horarios/horarios.component';
 import { StreamTypeSaveComponent } from './pages/stream-types-save/stream-types-save.component';
 import { StreamTypesComponent } from './pages/stream-types/stream-types.component';
 import { StreamerSaveComponent } from './pages/streamer-save/streamer-save.component';
@@ -45,6 +46,9 @@ const routes: Routes = [
           },
           { 
             path: 'stream-types-save/:id', component: StreamTypeSaveComponent
+          },
+          { 
+            path: 'horarios', component: HorariosComponent
           },
           { 
             path: '404', component: NotFoundComponent

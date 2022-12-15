@@ -1,0 +1,29 @@
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Horario de Streams</h1>
+        <mat-form-field style="min-width: 20rem;">
+            <mat-label>Seleccione un Grupo</mat-label>
+            <mat-select [formControl]="id_group" (ngModelChange)="getStreamers()">
+                <mat-option *ngFor="let group of groups" [value]="group.id">
+                    {{group.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body" style="z-index: 0;">
+                    <mbsc-eventcalendar [data]="stream_events" [options]="eventSettings"></mbsc-eventcalendar>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
